@@ -1,5 +1,4 @@
-from GCDcalculator import gcd, modular_inverse
-from ModExpo import modexp
+from GCDcalculator import gcd, modular_inverse, modexp
 from encoding import encode, decode
 
 private = open("private", "r")
@@ -28,8 +27,7 @@ def encrypt(filename):
 			cipher = str(modexp(message, pub_key, n))
 			encoded_message += cipher + "\r\n"
 	cipher = open("cipher_text", "w+")
-	cipher.write(encoded_message)	
-	print("Success")	
+	cipher.write(encoded_message)		
 
 
 def decrypt(filename):
@@ -45,7 +43,6 @@ def decrypt(filename):
 		message = str(modexp(int(cipher), priv_key, n))
 		original_message += decode(message) + " "
 		i = i + 1
-	print "Success"
 
 	decoded_message = open("decoded_message.txt", "w+")
 	decoded_message.write(original_message)		
