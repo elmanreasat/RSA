@@ -17,13 +17,14 @@ cipher = 0
 def encrypt(filename):
 	encoded_message = ""
 	with open(filename) as file:
-		for line in file:
-			for word in line.split():
-				message = encode(word)
-				cipher = str(modexp(message, pub_key, n))
-				encoded_message += cipher + "\r\n"
-	cipher = open("cipher_text", "w+")
-	cipher.write(encoded_message)	
+		for word in file.read().split():
+			message = encode(word)
+			cipher = str(modexp(message, pub_key, n))
+			encoded_message += cipher + "\r\n"
+
+	with open("cipher_text", "w+") as file:
+		file.write(encoded_message)	
+		
 	print("Success")	
 
 encrypt("test.txt")
