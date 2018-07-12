@@ -17,11 +17,11 @@ P = generate_prime_number() #random large prime 1
 Q = generate_prime_number() #random large prime 2
 n = P*Q
 priv_key = generate_d()
-pub_key = modular_inverse(d, (P-1)*(Q-1))
+pub_key = modular_inverse(priv_key, (P-1)*(Q-1))
 
 private.write(str(n) + "\r\n")
 private.write(str(priv_key) + "\r\n")
 public.write(str(n) + "\r\n")
 public.write(str(pub_key) + "\r\n")
 
-print("Success")
+print("Successfully created private and public keys")
